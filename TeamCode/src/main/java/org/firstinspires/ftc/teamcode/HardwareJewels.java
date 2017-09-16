@@ -46,7 +46,7 @@ public class HardwareJewels {
         // setting the powers
         Left.setPower(0);
         Right.setPower(0);
-        Servo.setPosition(.5);// setting the position
+        Servo.setPosition(.7);// setting the position
 
         // running with encoders
         Left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -61,7 +61,7 @@ public class HardwareJewels {
         if (remaining > 0)
             Thread.sleep(remaining);
 
-        // Reset the cycle clock for the next pass.
+        // Reset the cycle cloc for the next pass.
         period.reset();
 
     }
