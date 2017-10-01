@@ -22,7 +22,7 @@ public class Servo_Test extends LinearOpMode {
             if (gamepad1.a) {
                 servo.setPosition(1);
             }
-            if (gamepad1.b) {
+            if (gamepad1.b) { // caleb
                 servo.setPosition(0);
             }
         }
