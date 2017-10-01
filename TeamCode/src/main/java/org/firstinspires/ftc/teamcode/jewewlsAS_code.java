@@ -14,11 +14,9 @@ import com.qualcomm.robotcore.robot.Robot;
 
 /*
 -----------------------------------------------------------------------
-this is code for knocking down one of the Jewels
-the program uses two dcmotors, one servo, and a rev color range sensor
-and this code is built for the new test bot
-
-this code does not work, yet.
+This is code for knocking down one of the Jewels.
+The program uses two dcmotors, one servo, and a rev color range sensor
+and this code is built for the new test bot.
 -----------------------------------------------------------------------
 */
 // this is for the red team
@@ -37,29 +35,31 @@ public class jewewlsAS_code extends LinearOpMode {
         waitForStart();
        // wait(5000);// wait 5 seconds
         sleep(1000);
-            if (robot.ColorRange.red() > 50 == true){ // if red is greater than blue
+          //  if (robot.ColorRange.red() > 50 == true){ // if red is greater than blue
                 robot.Right.setPower(1);// robot moves forwards
                 robot.Left.setPower(1);
                 sleep(100);// for 1/10 second
                 robot.Left.setPower(0);// stops
                 robot.Right.setPower(0);
-            }
+
             sleep(50);
           // if (robot.ColorRange.red() > 50 == true) ; // if red is greater than blue
             //robot.Left.setPower(1);
             //robot.Right.setPower(1);// robot moves forward
            // else if
-            if (robot.ColorRange.blue() > 40 == true) {// if blue is greater than red
+            //if (robot.ColorRange.blue() > 40 == true) {// if blue is greater than red
                 robot.Left.setPower(-1);
                 robot.Right.setPower(-1);// robot moves backwards
                 sleep(100);// for 1/10 second
                 robot.Left.setPower(0);
                 robot.Right.setPower(0);// stops
-            }
+
+
+
 
             telemetry.addLine();
-            telemetry.addData("red", robot.ColorRange.red());  // raw values that are on the driver control phone
-            telemetry.addData("blue", robot.ColorRange.blue());
+            //telemetry.addData("red", robot.ColorRange.red());  // raw values that are on the driver control phone
+            //telemetry.addData("blue", robot.ColorRange.blue());
             telemetry.update();
 
 

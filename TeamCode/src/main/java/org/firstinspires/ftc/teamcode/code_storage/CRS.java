@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.code_storage;
 
 
 import com.qualcomm.hardware.lynx.LynxI2cColorRangeSensor;
@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.I2cAddr;
 
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.teamcode.HardwareCS;
 
 /**
  * Created by caleb on 7/31/17.
