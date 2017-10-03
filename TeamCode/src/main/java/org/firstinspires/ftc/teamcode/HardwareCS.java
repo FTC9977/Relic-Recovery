@@ -5,6 +5,13 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.robotcore.util.ReadWriteFile;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
+
+import java.io.File;
+import java.util.Locale;
 
 
 /**
@@ -46,6 +53,10 @@ public class HardwareCS
     public static final double left = 0.5;
     public static final double right =0.55;
 
+
+    //~~~~ IMU:
+    public BNO055IMU imu;
+    public boolean calibratedIMU;
 
     /* Uncomment the following lines to add additional motors
      *
@@ -129,8 +140,46 @@ public class HardwareCS
          *  leftClaw.setPosition(MID_SERVO);
          */
 
+        //------------------------------------------------------------
+        // IMU - BNO055
+        // Set up the parameters with which we will use our IMU.
+        // + 9 degrees of freedom
+        // + use of calibration file (see calibration program)
+        //------------------------------------------------------------
+        BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+        parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
+        parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+        parameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
+        parameters.loggingEnabled      = true;
+        parameters.loggingTag          = "IMU";
+        parameters.mode                = BNO055IMU.SensorMode.NDOF;
 
-      }
+        parameters.accelerationIntegrationAlgorithm = null;
+
+        // Retrieve and initialize the IMU. We expect the IMU to be attached to an I2C port
+        // on a Core Device Interface Module, configured to be a sensor of type "AdaFruit IMU",
+        // and named "imu".
+        imu = hwMap.get(BNO055IMU.class, "imu");
+        imu.initialize(parameters);
+
+        // Read the IMU configuration from the data file saved during calibration.
+        // Using try/catch allows us to be specific about the error instead of
+        // just showing a NullPointer exception that could come from anywhere in the program.
+        calibratedIMU = true;
+        try {
+            File file = AppUtil.getInstance().getSettingsFile(parameters.calibrationDataFile);
+            String strCalibrationData = ReadWriteFile.readFile(file);
+            BNO055IMU.CalibrationData calibrationData = BNO055IMU.CalibrationData.deserialize(strCalibrationData);
+            imu.writeCalibrationData(calibrationData);
+        }
+        catch (Exception e) {
+            calibratedIMU = false;
+        }
+    }
+
+
+
+
 
     /***
      *
@@ -150,8 +199,20 @@ public class HardwareCS
         if (remaining > 0)
             Thread.sleep(remaining);
 
-        // Reset the cycle cloc for the next pass.
+        // Reset the cycle clock for the next pass.
         period.reset();
 
+    }
+
+    //----------------------------------------------------------------------------------------------
+    // Formatting
+    //----------------------------------------------------------------------------------------------
+
+    public String formatAngle(AngleUnit angleUnit, double angle) {
+        return formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle));
+    }
+
+    public String formatDegrees(double degrees){
+        return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
 }
