@@ -2,6 +2,9 @@ package org.firstinspires.ftc.teamcode;
 
 /**
  * Created by eharwood on 10/2/17.
+ *
+ *  https://github.com/ethan-schaffer/Sample-FTC-Code/blob/master/ftc_app-master/ftc_app-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/MecanumSamples/MecanumTeleOp.java
+ *
  */
 
 public class UniversalConstants {
