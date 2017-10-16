@@ -12,10 +12,12 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class claw extends LinearOpMode {
 
    Servo servo;
+   Servo servo1;
     DcMotor motor;
     @Override
     public void runOpMode() throws InterruptedException {
 
+        servo1 = hardwareMap.servo.get("servo1");
         servo = hardwareMap.servo.get("servo");
         motor = hardwareMap.dcMotor.get("motor");
 
@@ -26,9 +28,11 @@ public class claw extends LinearOpMode {
 
             if (gamepad1.a) {
                 servo.setPosition(1);
+                servo1.setPosition(0);
             }
             if (gamepad1.b) {
                 servo.setPosition(0);
+                servo1.setPosition(1);
             }
         }
 
