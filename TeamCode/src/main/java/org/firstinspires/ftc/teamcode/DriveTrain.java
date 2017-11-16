@@ -70,11 +70,11 @@ public class DriveTrain extends OpMode {
        // servo.setPosition(0);
         //servo1.setPosition(0);
         if (gamepad2.x == true){
-            servo1.setPosition(0);
-            servo.setPosition(1);
-        } else if (gamepad2.x == false){
-            servo.setPosition(0);
-            servo1.setPosition(1);
+            servo1.setPosition(0.1);
+            servo.setPosition(0.9);
+        } else if (gamepad2.a == true){
+            servo.setPosition(0.1);
+            servo1.setPosition(0.85);
         }
 
     }
