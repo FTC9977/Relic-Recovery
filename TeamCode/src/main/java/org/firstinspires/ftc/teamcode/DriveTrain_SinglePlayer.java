@@ -19,11 +19,11 @@ import java.util.Arrays;
  *
  */
 
-@TeleOp(name="MecanumTeleOP", group="CS")
+@TeleOp(name="MecanumTeleOP_SinlePlayer", group="CS")
 //@Disabled
 
 // delete  the claw code on here ok!!!!!!!!!!!!!!!!
-public class DriveTrain extends OpMode {
+public class DriveTrain_SinglePlayer extends OpMode {
 
     private static final double TRIGGERTHRESHOLD = .2;
     private static final double ACCEPTINPUTTHRESHOLD =  .15;
@@ -66,15 +66,22 @@ public class DriveTrain extends OpMode {
 
         //--------------------------------------------------------------------- claw code VVVVVVVVVVVVVVV
 
-        motor.setPower(gamepad2.left_stick_y);
+        motor.setPower(0);
        // servo.setPosition(0);
         //servo1.setPosition(0);
-        if (gamepad2.x == true){
+        if (gamepad1.right_bumper == true){
             servo1.setPosition(0.1);
             servo.setPosition(0.9);
-        } else if (gamepad2.a == true){
+        } else if (gamepad1.right_bumper == false){
             servo.setPosition(0.1);
             servo1.setPosition(0.85);
+        }
+
+        if (gamepad1.right_trigger == 1){
+            motor.setPower(.3);
+
+        } else if (gamepad1.left_trigger == 1){
+            motor.setPower(-.3);
         }
 
     }

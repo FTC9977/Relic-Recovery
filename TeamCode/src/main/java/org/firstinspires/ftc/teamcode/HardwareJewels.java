@@ -19,8 +19,8 @@ this is for java class ( jewewlsAS_code )and built for the new test bot
  */
 
 public class HardwareJewels {
-    public DcMotor Left = null; // for the left motor
-    public DcMotor Right = null; // for the right motor
+    //public DcMotor Left = null; // for the left motor
+   // public DcMotor Right = null; // for the right motor
     public Servo Servo = null; // for the servo
     public LynxI2cColorRangeSensor ColorRange = null; // the rev robotics color range sensor
     public I2cAddr ColorNumber = I2cAddr.create7bit(0x39);// the address for the  I2c color range sensor
@@ -36,21 +36,21 @@ public class HardwareJewels {
     public void init(HardwareMap Jewels){
         hwMap = Jewels;
         // giving it its config names
-        Left = hwMap.dcMotor.get("Left");
-        Right = hwMap.dcMotor.get("Right");
+       // Left = hwMap.dcMotor.get("Left");
+       // Right = hwMap.dcMotor.get("Right");
         Servo = hwMap.servo.get("Servo");
         ColorRange = (LynxI2cColorRangeSensor) hwMap.get("ColorRange");
         ColorNumber = new I2cAddr(0x39);
         // set the Left motor in reverse
-        Left.setDirection(DcMotorSimple.Direction.REVERSE);
+      //  Left.setDirection(DcMotorSimple.Direction.REVERSE);
         // setting the powers
-        Left.setPower(0);
-        Right.setPower(0);
+      //  Left.setPower(0);
+        //Right.setPower(0);
         Servo.setPosition(.7);// setting the position
 
         // running with encoders
-        Left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        Right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //Left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //Right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
     }
     public void waitForTick(long periodMs) throws InterruptedException {
