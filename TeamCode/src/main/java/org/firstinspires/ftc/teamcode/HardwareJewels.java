@@ -46,7 +46,7 @@ public class HardwareJewels {
         // setting the powers
       //  Left.setPower(0);
         //Right.setPower(0);
-        Servo.setPosition(.7);// setting the position
+        Servo.setPosition(.9);// setting the position
 
         // running with encoders
         //Left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);

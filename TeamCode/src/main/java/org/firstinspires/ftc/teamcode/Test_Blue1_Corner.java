@@ -18,6 +18,9 @@ public class Test_Blue1_Corner extends LinearOpMode {
         robot.init(hardwareMap);// HardwareJewels file
         //robot.Right.setPower(0);
         //robot.Left.setPower(0);
+        telemetry.addData("blue", robot.ColorRange.blue());
+        telemetry.addData("red", robot.ColorRange.red());
+        telemetry.update();
         waitForStart();
 
         MAS.Left_Front.setPower(0);
@@ -30,16 +33,17 @@ public class Test_Blue1_Corner extends LinearOpMode {
         // wait(5000);// wait 5 seconds
         sleep(1000);
         if (robot.ColorRange.red() > 50 == true) { // if red is greater than blue
-            MAS.N(-1);// robot moves forwards
+            MAS.N(1);// robot moves forwards
             sleep(100);// for 1/10 second
             MAS.S(0);// stops
+        }
             sleep(50);
 
-            if (robot.ColorRange.blue() > 40 == true) {// if blue is greater than red
-                MAS.N(1);// robot moves backwards
+            if (robot.ColorRange.blue() > 50 == true) {// if blue is greater than red
+                MAS.S(1);// robot moves backwards
                 sleep(100);// for 1/10 second
                 MAS.N(0);// stops
-
+            }
                 robot.Servo.setPosition(0.1);
 
                 sleep(500);
@@ -64,9 +68,9 @@ public class Test_Blue1_Corner extends LinearOpMode {
                 MAS.E(0);
 
 
-            }
 
 
-        }
+
+
     }
 }
