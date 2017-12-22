@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -26,7 +27,7 @@ import java.util.Arrays;
 public class DriveTrain extends OpMode {
 
     private static final double TRIGGERTHRESHOLD = .2;
-    private static final double ACCEPTINPUTTHRESHOLD =  .15;
+    private static final double ACCEPTINPUTTHRESHOLD =  .05;
     private static final double SCALEDPOWER = 1;  // The emphasis is on the current controller reading (vs. current motor power) on the drive train
 
     private static DcMotor leftFrontWheel, leftBackWheel, rightFrontWheel, rightBackWheel;
@@ -66,15 +67,22 @@ public class DriveTrain extends OpMode {
 
         //--------------------------------------------------------------------- claw code VVVVVVVVVVVVVVV
 
-        motor.setPower(gamepad2.left_stick_y);
+        motor.setPower(gamepad2.left_stick_y * .5);
        // servo.setPosition(0);
         //servo1.setPosition(0);
         if (gamepad2.x == true){
             servo1.setPosition(0.1);
             servo.setPosition(0.9);
         } else if (gamepad2.a == true){
-            servo.setPosition(0.1);
-            servo1.setPosition(0.85);
+            servo.setPosition(0.08);
+            servo1.setPosition(.92);
+        } else if (gamepad2.right_trigger == 1) {
+            servo.setPosition(.45);
+            servo1.setPosition(.5);
+            // added above code, when robot is at crypto box, driver presses right trigger to cause gripper
+            // to only partially open.  Trying to solve the problem where a full open at the crypto box
+            // was knocking already scored glpyhs out of the crypto-box and de-scoring them.
+
         }
 
     }
