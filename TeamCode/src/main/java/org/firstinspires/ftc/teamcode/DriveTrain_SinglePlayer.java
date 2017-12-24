@@ -78,10 +78,10 @@ public class DriveTrain_SinglePlayer extends OpMode {
         }
 
         if (gamepad1.right_trigger == 1){
-            motor.setPower(-.5);
+            motor.setPower(-1);
 
         } else if (gamepad1.left_trigger == 1){
-            motor.setPower(.5);
+            motor.setPower(1);
         }
 
     }
