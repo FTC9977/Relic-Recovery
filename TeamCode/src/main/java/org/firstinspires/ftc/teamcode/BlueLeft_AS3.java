@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 
-@Autonomous(name="Blue_Left_AS2", group="MAS")
+@Autonomous(name="Blue_Left_AS3", group="MAS")
 //@DISABLED
 
 
