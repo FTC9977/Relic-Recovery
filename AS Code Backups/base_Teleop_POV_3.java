@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 /**
  * Created by eharwood on 12/29/16.
  */
-@TeleOp(name="Base_TeleOP_POV_2", group="CS")
+//TeleOp(name="Base_TeleOP_POV_2", group="CS")
 //@Disabled
 
 public class base_Teleop_POV_3 extends LinearOpMode {

@@ -27,7 +27,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  *
  */
 @TeleOp(name="Agent-390", group="CS")
-//@Disabled
+@Disabled
 
 public class agent390Tank extends LinearOpMode {
 

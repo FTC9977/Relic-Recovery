@@ -1,19 +1,19 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
+
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.hardware.bosch.BNO055IMU;
-import com.qualcomm.robotcore.util.ReadWriteFile;
+//import com.qualcomm.hardware.bosch.BNO055IMU;
+//import com.qualcomm.robotcore.util.ReadWriteFile;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
-import com.qualcomm.hardware.lynx.LynxI2cColorRangeSensor;
-import com.qualcomm.robotcore.hardware.I2cAddr;
-import com.sun.tools.javac.tree.DCTree;
+//import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
+//import com.qualcomm.hardware.lynx.LynxI2cColorRangeSensor;
+//import com.qualcomm.robotcore.hardware.I2cAddr;
+//import com.sun.tools.javac.tree.DCTree;
 
-import java.io.File;
+//import java.io.File;
 import java.util.Locale;
 
 
@@ -24,7 +24,7 @@ import java.util.Locale;
  *
  * Purpose:
  *  The purpose of this java.class file is to define all the specific hardware for
- *  the competition Robot - Velocity Vortex '2017'
+ *  the competition Robot - Relic Recovery 2018
  *
  *  Usage:
  *
@@ -43,10 +43,10 @@ import java.util.Locale;
 public class HardwareMap_Mecanum_AS2 {
 
     public DcMotor RF = null;
-    public DcMotor RR  = null;
-    public DcMotor LF  = null;
-    public DcMotor LR   = null;
-    public DcMotor arm  = null;
+    public DcMotor RR = null;
+    public DcMotor LF = null;
+    public DcMotor LR = null;
+    public DcMotor arm = null;
 
 
 	/* This section will define any SERVO motors in use
@@ -66,12 +66,12 @@ public class HardwareMap_Mecanum_AS2 {
 
 
     //~~~~ IMU:
-    public BNO055IMU imu;
-    public boolean calibratedIMU;
+   // public BNO055IMU imu;
+   // public boolean calibratedIMU;
 
     // Color Range Sensor
-    public LynxI2cColorRangeSensor ColorRange = null; // the rev robotics color range sensor
-    public I2cAddr ColorNumber = I2cAddr.create7bit(0x39);// the address for the  I2c color range sensor
+   // public LynxI2cColorRangeSensor ColorRange = null; // the rev robotics color range sensor
+   // public I2cAddr ColorNumber = I2cAddr.create7bit(0x39);// the address for the  I2c color range sensor
 
 
 
@@ -87,35 +87,34 @@ public class HardwareMap_Mecanum_AS2 {
         LF = hwMap.dcMotor.get("LF");
         LR = hwMap.dcMotor.get("LR");
 
-        arm = hwMap.dcMotor.get("arm");
-        servo = hwMap.servo.get("s");
-        servo1 = hwMap.servo.get("s1");
+        //arm = hwMap.dcMotor.get("arm");
+        //servo = hwMap.servo.get("s");
+        //servo1 = hwMap.servo.get("s1");
 
-    /*    RF.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        RR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        LR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        LR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-*/
+
+        // Set Motor Direction
+
+        RF.setDirection(DcMotor.Direction.FORWARD);
+        RR.setDirection(DcMotor.Direction.FORWARD);
+        LF.setDirection(DcMotor.Direction.REVERSE);
+        LR.setDirection(DcMotor.Direction.REVERSE);
+
         // Set all motors Power to Zero Power
         RF.setPower(0);
         RR.setPower(0);
         LF.setPower(0);
         LR.setPower(0);
 
-        arm.setPower(0);
 
-        // Set Motor Direction
-/*
-        RF.setDirection(DcMotorSimple.Direction.FORWARD);
-        RR.setDirection(DcMotorSimple.Direction.FORWARD);
-        LF.setDirection(DcMotorSimple.Direction.REVERSE);
-        LR.setDirection(DcMotorSimple.Direction.REVERSE);
-*/
-        RF.setDirection(DcMotor.Direction.FORWARD);
-        RR.setDirection(DcMotor.Direction.FORWARD);
-        LF.setDirection(DcMotor.Direction.REVERSE);
-        LR.setDirection(DcMotor.Direction.REVERSE);
 
+        // Set Motors to use Encoders
+        RF.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        RR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        LR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        LR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+
+        /*
         // Color Range Sensor Initialization
 
         ColorRange = (LynxI2cColorRangeSensor) hwMap.get("ColorRange");
@@ -154,8 +153,10 @@ public class HardwareMap_Mecanum_AS2 {
             imu.writeCalibrationData(calibrationData);
         } catch (Exception e) {
             calibratedIMU = false;
-        }
+        } */
     }
+
+
     //----------------------------------------------------------------------------------------------
     // Formatting
     //----------------------------------------------------------------------------------------------
